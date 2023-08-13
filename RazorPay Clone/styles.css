@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Mulish', sans-serif;
+}
+
+.wrapper{
+    overflow-x:hidden;
+    overflow-y: auto;
+    width: 100vw;
+}
+
+#navbar-container{
+    width: 100%;
+    background-color:#02042a;   
+}
+
+.navbar{
+    width: 1080px;
+    display: flex;
+    position: relative;
+    margin:0 auto;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.navbar-items{
+    position: relative;
+}
+
+.navbar-item-container{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    padding-left: 1.8rem;
+}
+
+.navbar-items a{
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.navbar-flag{
+    width:28px;
+    height:20px;
+}
+
+#nav-logo{
+    width: 125px;
+}
+
+.items-div{
+    position: absolute;
+    bottom: -90%;
+    background-color: #2b84ea;
+    width: 100%;
+    height: 15%;
+    display: none;
+}
+
+.navbar-items:hover .items-div{
+    display: block;
+}
+
+.navbar-buttons{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap:1rem;
+} 
+
+.login-button{
+    display: block;
+    background-color: #02042a;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: 1px solid #4b94ed;
+    margin:7% 0;
+    font-weight: 600;
+    /* height: 600%;
+    width: 40%; */
+    border-radius: 2px;
+}
+
+.signup-button{
+    background-color: white;
+    color: #0b72e7;
+    padding: 0.5rem 1rem;
+    border: 1px solid #4b94ed;
+    margin:7% 0;
+    font-weight: 600;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap:0.6rem;
+}   
+
+
+.cards-hover-image{
+    position: absolute;
+    z-index: 101;
+    top:70%;
+    right: -0%;
+    opacity: 0;
+}
+
+.card-box:hover .svg{
+    filter: drop-shadow(15px 0px 15px rgba(255,255,255,0.8));
+}
+
+
+.card-box:hover .cards-hover-image{
+    opacity: 1;
+}
+
+
+.find-me-product-section{
+    background-image: linear-gradient(180deg, rgba(74, 144, 245, 0.21) -34.7%, rgba(125, 186, 244, 0.063) 100%, rgba(125, 186, 244, 0.1295) 100%);
+    border: 1px solid rgba(42, 134, 243, 0.32);
+}
+
+.find-me-product-link:hover{
+    color: white;
+    background-color: #0b72e7;
+}
+
+.card-box2:hover .svg2{
+    filter: drop-shadow(15px 0px 15px black);
+}
+
+.corefeaturesection{
+    background-size: 100% 100%;
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+}
+
+
+.companiesList{
+    animation-name: companyAnimation;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: -1s;
+}
+
+  @keyframes companyAnimation{
+    0%{
+        top:0%;
+    }
+
+    50%{
+        top:-50%;
+    }
+
+    100%{
+        top:-100%
+    }
+}
+/* 
+*{
+    background-image: url();
+} */
+
+.ctaSection{
+    background-size: 100% 100%;
+  }
+
+
