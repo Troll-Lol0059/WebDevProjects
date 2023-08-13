@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Weather App</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="container">
+            <!-- Elements which does not change due to change in layout -->
+            <div data-staticElements>
+                <h1 id="appMainHeading">WEATHER  APP</h1>
+                
+                <div class="tabsContainer">
+                    <div id="userWeatherTab" class="tab">Your Weather</div>
+                    <div id="searchWeatherTab" class="tab">Search Weather</div>
+                </div>
+            </div>
+
+            <!-- Grant Location Taker -->
+            <div data-locationTakerFrame>
+                <div><img src="./assets/location.png" alt="cant load" width="80px" height="80px"></div>
+                <div class="locationTakerFrameHeading">Grant Location Access</div>
+                <div class="locationTakerFrameSubHeading">Allow Access to get weather Information</div>
+                <div id="locationTakerButton">Grant Access</div>
+            </div>
+
+            <!-- Loader -->
+            <div data-pageLoader>
+                <img src="./assets/loading.gif" alt="cant load" width="150px" height="150px">
+            </div>
+
+
+            <!-- Div which contains user weather data -->
+            <div data-userWeatherDisplayContainer>
+                <div id="userWeatherDispalyerFirstDiv">
+                    <!-- Replace these with JS accoring to weather -->
+                    <div id="userCityDiv">
+                        <div class="userCityName">
+                            
+                        </div>
+
+                        <div class="userCountryFlag">
+                            
+                        </div>
+
+                    </div>
+                    <div class="userWeather">Weather</div>
+
+                    <div><img src="./assets/loading.gif" class="imageAccordingToWeather" alt=""></div>
+                    
+                    <div class="temperature"> <img src="./assets/loading.gif" class="imageAccordingToWeather" alt=""> </div>
+
+                </div>
+
+                <div class="userWeatherDispalyerSecondDiv">
+                    <!-- WindSpeed Div -->
+                    <div class="userWeatherDetails">
+                        <img src="./assets/wind.png" alt="" class="weatherConditionsImages">
+                        <span class="userWeatherDetailHeading">WINDSPEED</span>
+                        <span id="userWindspeedData" class="weatherData"> </span>
+                    </div>
+
+                    <!-- Humidity Div -->
+                    <div class="userWeatherDetails">
+                        <img src="./assets/humidity.png" class="weatherConditionsImages" alt="">
+                        <span class="userWeatherDetailHeading">HUMIDITY</span>
+                        <span id="userHumidityData" class="weatherData"> </span>
+                    </div>
+
+                    <!-- Cloud Div -->
+                    <div class="userWeatherDetails">
+                        <img src="./assets/cloud.png" class="weatherConditionsImages" alt="">
+                        <span class="userWeatherDetailHeading">CLOUDS</span>
+                        <span id="userCloudData" class="weatherData">  </span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Search Box to search Weather-->
+            <div data-searchWeatherFormContainer>
+                    <div class="seachBarDiv">
+                        <input type="text" placeholder="Search for City..." id="searchCity" required/>
+                    </div>
+
+                    <div class="searchButtonDiv">
+                        <img src="./assets/search.png" alt="not found">
+                    </div>
+            </div>
+
+            <!-- City Not Found -->
+            <div data-cityNotFound>
+                <img src="./assets/not-found.png" alt="cant load" width="150px" height="150px">
+                <div>City Not Found !!</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

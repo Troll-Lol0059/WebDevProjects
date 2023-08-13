@@ -1,0 +1,265 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --colorDark1: #112D4E;
+    --colorDark2: #3F72AF;
+    --colorLight1: #DBE2EF;
+    --colorLight2: #F9F7F7;
+}
+
+#wrapper{
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-image:linear-gradient(160deg, #112d4e 0%, #3f72af 100%);
+    color: var(--colorLight2);
+}
+
+#container{
+    position: relative;
+    height: 100%;
+    width: 45%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+[data-staticElements]{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#appMainHeading{
+    margin-bottom: 3.5rem;;
+}
+
+.tabsContainer{
+    width: 100%;
+    display: flex;
+    gap:7rem;
+    justify-content: space-around;
+    margin: 1rem 0;
+ 
+}
+
+.tab{
+    color:white;
+    font-size: 1.15rem;
+}
+
+.tabStyle{
+    background-color: rgba(219, 226, 239, 0.5);
+    padding: 0.25rem 0.35rem;
+    border-radius: 5px;
+}
+
+#userWeatherTab{
+    cursor: pointer;
+}
+
+#searchWeatherTab{
+    cursor: pointer;
+}
+
+
+/* Grant Location Frame */
+[data-locationTakerFrame]{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+    margin: 3rem 0;
+    scale: 0;
+}
+
+.locationTakerFrameHeading{
+    font-size: 2.05rem;
+    font-weight: 800;
+}
+
+.locationTakerFrameSubHeading{
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+#locationTakerButton{
+    background-color: var(--colorDark2);
+    padding: 12px 30px;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    cursor: pointer;
+}
+
+[data-pageLoader]{
+    position: absolute;
+    top:35%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    scale: 0;
+}
+
+/* User Tab Frame */
+[data-userWeatherDisplayContainer]{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:30%;
+    padding-bottom: 2rem;
+    scale: 0;
+}
+
+#userWeatherDispalyerFirstDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+}
+
+#userCityDiv{
+    display: flex;
+    gap:0.5rem;
+    font-size: 2rem;
+}
+
+.userWeather{
+    font-size:1.5rem;
+}
+
+.imageAccordingToWeather{
+    height: 70px;
+    width: 70px;
+}
+
+.temperature{
+    font-size: 3.5rem;
+}
+
+.userWeatherDispalyerSecondDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1.25rem;
+    margin-top: 1rem;
+}
+
+.weatherConditionsImages{
+    height: 50px;
+    width: 50px;
+}
+
+.userWeatherDetails{
+    background-color: rgba(219, 226, 239, 0.5);
+    width: 30%;
+    display: flex;
+    gap:0.75rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
+
+.userWeatherDetailHeading{
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.weatherData{
+    font-weight: 500;
+    font-size:1.15rem;
+}
+
+
+/* Search Weather Tab Frame */
+[data-searchWeatherFormContainer]{
+    position: absolute;
+    top:30%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    scale: 0;
+}
+
+.searchBarDiv{
+    width: 100%;
+}
+
+[data-searchWeatherFormContainer] input[type="text"]{
+    appearance: none;
+    height: 70%;
+    width: 520px;
+    background-color: var(--colorLight1);
+    margin-left: 1rem;
+    border:none;
+    border-radius: 10px;
+    padding: 0.95rem;
+    background-color: rgba(219, 226, 239, 0.5);
+    color:var(--colorLight2);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border: 2px solid var(--colorLight2);
+}
+
+::-webkit-input-placeholder { /* Edge */
+    color: var(--colorLight1);
+    font-size: 1.1rem;
+  }
+
+[data-searchWeatherFormContainer] img{
+    height: 20px;
+    width: 20px;
+}
+
+.searchButtonDiv{
+    background-color: rgba(219, 226, 239, 0.1);
+    border-radius: 100%;
+    padding: 9px 10px;
+    cursor: pointer;
+    border:1px solid rgba(219, 226, 239, 0.5);
+}
+
+
+/* Not Found DIV */
+[data-cityNotFound]{
+    position: absolute;
+    top:45%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scale: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+
+.active{
+    scale:1;
+}
+
+
+
+
+
+
+
+
+
