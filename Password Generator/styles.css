@@ -1,0 +1,258 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'League Spartan', sans-serif;
+}
+
+:root {
+
+    --dk-violet: hsl(268, 75%, 9%);
+    --lt-violet: hsl(268, 47%, 21%);
+    --lt-violet2: hsl(281, 89%, 26%);
+    --vb-violet: hsl(285, 91%, 52%);
+    --vb-violet2: hsl(290, 70%, 36%);
+  
+    --vb-yellow: hsl(52, 100%, 62%);
+  
+  
+    --pl-white: hsl(0, 0%, 100%);
+  
+    --vb-cyan: hsl(176, 100%, 44%);
+    --vb-cyan2: hsl(177, 92%, 70%);
+    --dk-text: hsl(198, 20%, 13%);
+}
+
+
+#wrapper{
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: linear-gradient(231deg, rgba(22, 6, 40, 1) 0%, rgba(52, 28, 79, 1) 50%, rgba(88, 7, 125, 1) 100%);;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+#container{
+    height: 100%;
+    width: 37%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#passwordDisplayDiv{
+    position: relative;
+    right: 30px;
+    margin-top: 0.2rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+h1{
+    font-size: 1.75rem;
+    color: #ffffff;
+    opacity: 0.75;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+#passDisplayer{
+    appearance: none;
+    height: 60px;
+    width: 100%;
+    border-radius: 15px;
+    background-color: var(--dk-violet);
+    border-bottom: 5px solid var(--lt-violet2);
+    border-right: 0;
+    border-left: 0;
+    padding: 0.25rem 1.75rem;
+    padding-top: 0.65rem;
+    color: var(--vb-yellow);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+#passDisplayer::placeholder {
+    color: var(--vb-yellow);
+    font-size: 1.5rem;
+    font-weight: 500;
+    opacity: 0.5;
+}
+
+#passwordContentContainer{
+    width: 80%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem;
+    background-color: var(--dk-violet);
+    padding: 1rem 2rem;
+    color:white;
+}
+
+#passwordLengthContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size:1.15rem;
+    padding: 1rem 0;
+}
+
+h3{
+    font-weight: 400;
+}
+
+#passwordLengthDisplayer{
+    color:var(--vb-yellow);
+    font-weight:500;
+    font-size: 1.45rem;
+}
+
+#passLengthSlider{
+    appearance: none;
+    border-radius: 15px;
+    width: 100%;
+    height: 15px;
+    background-color: var(--lt-violet);
+    margin: 0.5rem 0;
+    cursor: pointer;
+    background-image: linear-gradient(var(--vb-violet), var(--vb-violet));
+    background-size: 40% 100%;
+    background-repeat: no-repeat;
+    transition: all ease-in-out;
+}
+
+#passLengthSlider::-webkit-slider-thumb {
+    appearance: none;
+    position: relative;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: var(--vb-yellow);
+    box-shadow: 0 0 50px var(--vb-yellow);
+}
+
+#passLengthSlider:focus{
+    border: 2px solid var(--vb-yellow);
+}
+
+#passLengthSlider::-webkit-slider-thumb:hover{
+    background-color: var(--dk-violet);
+    border: 2px solid var(--vb-yellow);
+}
+
+#checkboxContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:1rem;
+    padding: 1.25rem 0;
+}
+
+.check{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.35rem;
+}
+
+.check input{
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--vb-cyan);
+    cursor: pointer;
+    position: relative;
+    border-radius: 0.35rem;
+}
+
+.check input:checked{
+    background-color: var(--vb-cyan);
+}
+
+.check input:checked::before {
+    content: '✔';
+    position: absolute;
+    color: var(--dk-text);
+    font-size:1.05rem;
+    font-weight: 600;
+    top:-3.75px;
+    left: 3px;
+}
+
+#passwordStrengthContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.25rem 0;
+}
+
+#strengthLabel{
+    font-size: 1.35rem;
+}
+
+#strengthDisplayer{
+    height: 25px;
+    width: 25px;
+    background-color: #ffffff90;
+    border-radius: 50%;
+    box-shadow: 0 0 50px #ffffff;
+}
+
+#generatePasswordButton{
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 100%;
+    color: var(--vb-yellow);
+    background-color: var(--vb-violet);
+    padding: 1rem;
+    border-radius: 15px;
+    border-bottom: 4px solid var(--vb-yellow);
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+
+#copyButton{
+    position: absolute;
+    top:60%;
+    right: -8%;
+    cursor: pointer;
+}
+
+.copiedText{
+    position: absolute;
+    top:30%;
+    right: -20%;
+    background-color: var(--lt-violet2);
+    padding: 0.35rem 0.75rem;
+    border-radius: 25px;
+    color: var(--vb-yellow);
+    scale: 0;       
+}
+
+.active{
+    scale: 1;
+}
+
+
+
+
+
+
+
+
