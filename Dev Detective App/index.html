@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Detective App By TrollLol0059</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&family=Space+Mono:wght@700&family=Ubuntu&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="container">
+            <!-- app heading div -->
+            <div class="headingDiv">
+                <div class="appHeading">DevDetective</div>
+
+                <div class="modeButtonDiv darkModeButtonDiv">
+                    <div>DARK</div>
+                    <div><img src="./assets/images/moon-icon.svg" alt=""></div>
+                </div>
+
+                <div class="modeButtonDiv lightModeButtonDiv">
+                    <div>LIGHT</div>
+                    <div><img src="./assets/images/sun-icon.svg" alt=""></div>
+                </div>
+
+
+            </div>
+
+            <!-- search bar div -->
+            <div class="searchBarDiv">
+                <input type="text" placeholder="Enter a GitHub UserName. . ." class="inputUsername" required>
+                <div class="searchButton">Search</div>
+                <img src="./assets/images/search-icon.svg" alt="" class="searchIconImage">
+            </div>
+
+            <div class="profileDisplayContainer">
+                <!-- image div -->
+                <div class="profilePicDiv">
+                    <img src="./assets/android-chrome-512x512.png" class="profilePicImage" alt="cant load">
+                </div>
+
+                <div class="userInformationDiv">
+                    <!-- bio div -->
+                    <div class="bioDiv">
+                        <div class="nameAndDateContainerDiv">
+                            <div class="userName">Pranay Gupta</div>
+                            <div class="joiningDate">Joined 5 May 2020</div>
+                        </div>
+
+                        <div>
+                           <a href="#" class="profileLink"> @thepranayagupta</a>
+                        </div>
+
+                        <div class="profileBio">
+                            i write code
+                        </div>
+                    </div>
+
+                    <!-- followers and repos div -->
+                    <div class="followersAndRepoDiv">
+                        <!-- repos div -->
+                        <div>
+                            <div >Repos</div>
+                            <div class="userRepos">71</div>
+                        </div>
+
+                        <!-- Followers Div-->
+                        <div>
+                            <div>Followers</div>
+                            <div class="userFollowers">614</div>
+                        </div>
+
+                        <!-- Following-->
+                        <div>
+                            <div>Following</div>
+                            <div class="userFollowing">148</div>
+                        </div>
+
+                    </div>
+
+                    <!-- location & links div -->
+                    <div class="locationAndLinksDiv">
+                        <div class="locationDiv linkDivs">
+                            <div><img src="./assets/images/location-icon.svg" alt=""></div>
+                            <div class="userLocation">Kolkata, India</div>
+                        </div>
+
+                        <div class="bioLinkDiv linkDivs">
+                            <div><img src="./assets/images/website-icon.svg" alt=""></div>
+                            <div><a href="#">pranay.bio.link</a></div>
+                        </div>
+
+
+                        <div class="twitterLinkDiv linkDivs">
+                            <div><img src="./assets/images/twitter-icon.svg" alt=""></div>
+                            <div><a href="#">thepranayagupta</a></div>
+                        </div>
+
+                        <div class="companyNameDiv linkDivs">
+                            <div><img src="./assets/images/company-icon.svg" alt=""></div>
+                            <div>@Target Technology</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
