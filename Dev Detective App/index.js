@@ -16,7 +16,9 @@ var userLocation = document.querySelector(".userLocation");
 var userWebsite = document.querySelector(".userWebsite");
 var userTwitter = document.querySelector(".userTwitter");
 var userCompany = document.querySelector(".userCompany");
-
+const userNotFoundError = document.querySelector(".userNotFoundError");
+const profileDisplayContainer = document.querySelector(".profileDisplayContainer");
+const userNotFoundDiv = document.querySelector(".userNotFoundDiv");
 
 
 // required variables
@@ -32,12 +34,22 @@ function init(){
 }
 
 // functions
+function userNotFound(){
+    profileDisplayContainer.classList.remove("active");
+    userNotFoundError.classList.add("active");
+    userNotFoundDiv.classList.add("active");
+}
 
 // function to get User Data From Github
 async function fetchData(username){
-    let response = await fetch(url+username);
-    let data = await response.json();
-    return data;
+    try{
+        let response = await fetch(url+username);
+        let data = await response.json();
+        return data;
+    }
+    catch (error) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+  }
 }
 
 function setJoiningDate(date,monthArray){
@@ -55,6 +67,9 @@ function setJoiningDate(date,monthArray){
 }
 
 function setUserData(data){
+    if(data.message === "Not Found"){
+        userNotFound();
+    }
     profilePic.src = data.avatar_url;
     nameOfUser.textContent = data.name;
     joiningDate.textContent = setJoiningDate(data.created_at,monthArray);
@@ -70,23 +85,33 @@ function setUserData(data){
 }
 
 function loadProfile(username){
+    
     fetchData(username).then((data)=>{
+        profileDisplayContainer.classList.add("active");
         setUserData(data);
     })
 }
 
-
-
+function removeUserNotFound(){
+    userNotFoundError.classList.remove("active");
+    userNotFoundDiv.classList.remove("active");
+    profileDisplayContainer.classList.add("active");
+}
 
 // Event Listeners
 searchButton.addEventListener("click",()=>{
-        // function
+    // function
+    let userName = inputUsername.value;
+    removeUserNotFound();
+    loadProfile(userName);
 })
+
 
 inputUsername.addEventListener('keyup', (event)=> {
     if (event.keyCode === 13) {
-        // function
-      console.log("Activated !!");
+        let userName = inputUsername.value;
+        removeUserNotFound();
+        loadProfile(userName);
     }
 });
 

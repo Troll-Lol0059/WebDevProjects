@@ -34,6 +34,7 @@
     align-items: center;
     padding: 0.5rem 1rem;
     gap: 1.5rem;
+    position: relative;
 }
 
 .headingDiv{
@@ -119,11 +120,13 @@
 }
 
 .profileDisplayContainer{
+    position: relative;
     width: 100%;
     display: flex;
     padding: 2rem 0;
     background-color: var(--lm-bg-content);
     border-radius: 15px;
+    scale: 0;
 }
 
 .profilePicDiv{
@@ -150,7 +153,6 @@
 
 .bioDiv{
     width: 100%;
-    height: 140px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -216,6 +218,32 @@
 
 .linkDivs a{
     color: var(--lm-text);
+}
+
+.userNotFoundError{
+    position: absolute;
+    color: red;
+    top:35%;
+    right: 22%;
+    scale: 0;
+}
+
+.userNotFoundDiv{
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    right: 50%;
+    scale: 0;
+}
+
+.userNotFoundImage{
+    width: 750;
+    height: 90%;
+    background-size: cover;
+}
+
+.active{
+    scale: 1;
 }
 
 
