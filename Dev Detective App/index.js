@@ -27,22 +27,30 @@ const userNotFoundDiv = document.querySelector(".userNotFoundDiv");
 
 // required variables
 const url = 'https://api.github.com/users/';
-var pageMode = "";
 
 // Default Case
 function init(){
     inputUsername.value = "";
-    enableLightMode();
-    pageMode = "Light";
+    let pageMode = localStorage.getItem("pageMode");
+    
+    if(pageMode === "Light"){
+        enableLightMode();
+    }
+    else{
+        enableDarkMode();
+    }
+
     loadProfile("Troll-Lol0059");
 }
 
 // ----- functions of App -----
 
+// Default Light mode function
 function enableLightMode(){
     wrapper.classList.remove("darkMode");
     lightModeButton.classList.remove("active");
     darkModeButton.classList.add("active");
+    localStorage.setItem("pageMode","Light");
 }
 
 // Function for Dark Mode
@@ -50,6 +58,7 @@ function enableDarkMode(){
     wrapper.classList.add("darkMode");
     darkModeButton.classList.remove("active");
     lightModeButton.classList.add("active");
+    localStorage.setItem("pageMode","Dark");
 }
 
 // Function to render User Not Found Image if No users found

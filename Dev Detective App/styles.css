@@ -209,7 +209,7 @@
 }
 
 .linkDivs{
-    width: 45%;
+    width: 35%;
     display: flex;
     justify-content: baseline;
     align-items: center;
@@ -261,6 +261,57 @@
     --lm-icon-bg: brightness(1000%);
     --btn: #00008B80;
     transition: all,1s;
+}
+
+
+@media (max-width:1000px) and (min-width:400px) {
+    .container{
+        width: 100%;
+    }
+}
+
+@media (max-width:400px) {
+    .wrapper{
+        overflow-y: auto;
+    }
+    .container{
+        width: 100%;
+        display: flex;
+    }
+
+    .searchButton{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        padding: 1rem 0.4rem;
+        font-size: 0.75rem;
+        top: 25px;
+    }
+
+    .inputUsername{
+        width: 100%;
+    }
+
+    .inputUsername::placeholder{
+        font-size: 0.85rem;
+    }
+
+    .locationAndLinksDiv{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .profilePicImage{
+        width: 70px;
+        height: 70px;
+        border-radius: 999px;
+        margin-left: 10px;
+    }
+
 }
 
 
