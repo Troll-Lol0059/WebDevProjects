@@ -17,12 +17,13 @@
     --btn-hover: #60abff;
 }
 
-#wrapper{
+.wrapper{
     height: 100vh;
     width: 100vw;
     position: relative;
     overflow:hidden;
     background-color: var(--lm-bg);
+    transition: all,1s;
 }
 
 .container{
@@ -66,6 +67,7 @@
 .darkModeButtonDiv{
     position: absolute;
     right: 0%;
+    scale: 0;
 }
 
 .lightModeButtonDiv{
@@ -92,6 +94,7 @@
     padding-left: 70px;
     border-radius: 15px;
     font-size: 1rem;
+    background-color: var(--lm-bg-content);
 }
 
 .searchButton{
@@ -100,7 +103,7 @@
     top: 15%;
     border-radius: 10px;
     padding: 0.8rem 2rem;
-    background-color: #0079ff;
+    background-color: var(--btn);
     color: var(--lm-bg);
     cursor: pointer;
 }
@@ -115,7 +118,7 @@
     position: relative;
     font-family: monospace;
     font-weight: 500;
-    color: #2b3442;
+    color: var(--lm-text-alt);
     font-size: 1.15rem;
 }
 
@@ -168,22 +171,22 @@
 
 .nameOfUser{
     font-size: 1.75rem;
-    color: rgba(0, 0, 0,0.8);
+    color: var(--lm-text-alt);
 }
 
 .joiningDate{
     font-family: monospace;
     font-size: 1.05rem;
     font-weight: 500;
-    color: var(--lm-text-alt);
+    color: var(--lm-text);
 }
 
 .githubUserName{
-    color: #0079ff;
+    color: var(--lm-text);
 }
 
 .profileBio{
-    color:#2b344270;
+    color:var(--lm-text);
 }
 
 .followersAndRepoDiv{
@@ -194,6 +197,7 @@
     background-color:rgba(70, 96, 187, 0.1);
     padding: 1.75rem 0;
     border-radius: 10px;
+    color:var(--lm-text-alt);
 }
 
 .locationAndLinksDiv{
@@ -245,6 +249,28 @@
 .active{
     scale: 1;
 }
+
+
+/* Dark Mode CSS */
+.darkMode{
+    background-color: #141D2F;
+    --lm-bg-content: #1E2A47;
+    --lm-text: white;
+    --lm-text-alt: white;
+    --lm-shadow-xl: rgba(70,88,109,0.15);
+    --lm-icon-bg: brightness(1000%);
+    --btn: #00008B80;
+    transition: all,1s;
+}
+
+
+
+
+
+
+
+
+
 
 
 

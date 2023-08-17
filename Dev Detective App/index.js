@@ -2,6 +2,10 @@
 var inputUsername = document.querySelector(".inputUsername");
 const searchButton = document.querySelector(".searchButton");
 var monthArray = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const wrapper = document.querySelector(".wrapper");
+const modeButton = document.querySelector(".modeButtonDiv");
+const darkModeButton = document.querySelector(".darkModeButtonDiv");
+const lightModeButton = document.querySelector(".lightModeButtonDiv");
 
 // for setting element with data from api
 var profilePic = document.querySelector(".profilePicImage");
@@ -23,17 +27,32 @@ const userNotFoundDiv = document.querySelector(".userNotFoundDiv");
 
 // required variables
 const url = 'https://api.github.com/users/';
-const mode = ["light","dark"];
 var pageMode = "";
 
 // Default Case
 function init(){
     inputUsername.value = "";
-    pageMode = mode[0];
+    enableLightMode();
+    pageMode = "Light";
     loadProfile("Troll-Lol0059");
 }
 
-// functions
+// ----- functions of App -----
+
+function enableLightMode(){
+    wrapper.classList.remove("darkMode");
+    lightModeButton.classList.remove("active");
+    darkModeButton.classList.add("active");
+}
+
+// Function for Dark Mode
+function enableDarkMode(){
+    wrapper.classList.add("darkMode");
+    darkModeButton.classList.remove("active");
+    lightModeButton.classList.add("active");
+}
+
+// Function to render User Not Found Image if No users found
 function userNotFound(){
     profileDisplayContainer.classList.remove("active");
     userNotFoundError.classList.add("active");
@@ -52,6 +71,7 @@ async function fetchData(username){
   }
 }
 
+// Function to set Joining Date Beautifully
 function setJoiningDate(date,monthArray){
     //  splits date only from Time & Date
     const dateArray = date.split("T");
@@ -66,6 +86,7 @@ function setJoiningDate(date,monthArray){
     return finalDate;
 }
 
+// Function to set redering USER data from API
 function setUserData(data){
     if(data.message === "Not Found"){
         userNotFound();
@@ -84,6 +105,7 @@ function setUserData(data){
     userCompany.textContent = data.company === null ? "Not Set": data.company;
 }
 
+// Function to show set user data into UI
 function loadProfile(username){
     
     fetchData(username).then((data)=>{
@@ -92,13 +114,16 @@ function loadProfile(username){
     })
 }
 
+// To remove user not found image from UI
 function removeUserNotFound(){
     userNotFoundError.classList.remove("active");
     userNotFoundDiv.classList.remove("active");
     profileDisplayContainer.classList.add("active");
 }
 
-// Event Listeners
+// Event Listeners of APP
+
+// Search Button Listener
 searchButton.addEventListener("click",()=>{
     // function
     let userName = inputUsername.value;
@@ -106,7 +131,7 @@ searchButton.addEventListener("click",()=>{
     loadProfile(userName);
 })
 
-
+// Input tab binding with enter key
 inputUsername.addEventListener('keyup', (event)=> {
     if (event.keyCode === 13) {
         let userName = inputUsername.value;
@@ -115,5 +140,17 @@ inputUsername.addEventListener('keyup', (event)=> {
     }
 });
 
+
+// Mode Button Event Listeners
+darkModeButton.addEventListener('click',()=>{
+    enableDarkMode();
+})
+
+lightModeButton.addEventListener('click',()=>{
+    enableLightMode();
+})
+
+
+// Default case laoder on start
 init();
 
