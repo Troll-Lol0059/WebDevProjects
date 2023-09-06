@@ -1,10 +1,44 @@
 import {FcLike,FcLikePlaceholder} from "react-icons/fc";
+import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Card = (props) => {
     const courses = props.data;
 
     let descriptionString = courses.description;
     let descriptionSubString = descriptionString.substring(0,100) + "....";
+
+    let isLiked = props.isLiked;
+    let setLiked = props.setLiked;
+    const id = courses.id;
+
+    // function to hand like or dislike state
+    function likeHandler(){
+        // if isLiked array has course id (which means the course is liked)
+        // then unlike it on click
+        if(isLiked.includes(id)){
+            // removing the courseID of clicked Card from the previous state of array and setting it 
+            // as new isLiked array
+            setLiked( (prev) => prev.filter( (eachId) => (eachId !== id)) );
+            toast.warning("Course Disliked");
+        }
+        else{
+            // if no Courses are Liked (for initial render)
+            if(isLiked.length === 0){
+                // onClick of like button add the courseId of liked component into isLiked Array
+                setLiked([id]);
+                // display toast container
+                toast.success("Course Liked");
+            }
+            else{
+                // if some elements are liked already add the current liked card in previous liked array
+                setLiked( (prev) => [...prev , id]);
+                // display toast message
+                toast.success("Course Liked");
+            }
+        }
+    }
     
     return (
         // card container
@@ -29,9 +63,12 @@ const Card = (props) => {
                     {descriptionSubString}
                 </div>
 
-                <div className="bg-white h-[45px] w-[45px] rounded-full absolute top-[40%] right-[3%] flex items-center justify-center
-                cursor-pointer">
-                    <FcLikePlaceholder fontSize="1.75rem"/>
+                {/* div for like button */}
+                <div className="bg-white h-[40px] w-[40px] rounded-full absolute top-[40%] right-[4%] flex items-center justify-center
+                cursor-pointer" onClick={likeHandler}>
+                    {
+                        isLiked.includes(courses.id) ? <FcLike fontSize="1.75rem"/> : <FcLikePlaceholder fontSize="1.75rem"/>
+                    }
                 </div>
             </div>
         </div>
