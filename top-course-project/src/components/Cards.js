@@ -13,7 +13,7 @@ function Cards(props) {
 
             // add Object Values from API call into values if coursesData is not null or undefined
             const values = coursesData ? Object.values(coursesData) : [];
-
+            
             // for each category go into each course and add that into an array
             values.forEach((courseCategory) => {
                 courseCategory.forEach((course) => {

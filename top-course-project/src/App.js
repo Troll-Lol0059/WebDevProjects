@@ -6,6 +6,7 @@ import HeroSection from "./components/HeroSection";
 import { filterData, apiUrl } from "./data";
 import {FcLikePlaceholder,FcLike} from "react-icons/fa";
 import Spinner from "./components/Spinner";
+import Error404 from "./components/Error404";
 
 const App = () => {
   // setting courseData initially to null
@@ -17,6 +18,8 @@ const App = () => {
   // setting loading as false
   const [loading,setLoading] = useState(false);
 
+  const [notFound,setFound] = useState(false);
+
   // function to fetch API Data
   async function fetchData() {
     setLoading(true);
@@ -27,6 +30,7 @@ const App = () => {
     }
     catch (error) {
       toast("There is problem with Network !!");
+      setFound(true);
     }
     setLoading(false);
   }
@@ -45,7 +49,7 @@ const App = () => {
     <div className="w-[100vw]">
       <HeroSection filterData={filterData} coursesData={coursesData} 
       category={category} setCategory={setCategory} 
-      loading={loading} />
+      loading={loading} notFound={notFound} />
     </div>
 
     <ToastContainer />
