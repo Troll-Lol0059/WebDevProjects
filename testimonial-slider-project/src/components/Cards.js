@@ -2,9 +2,28 @@ import { FaQuoteRight, FaQuoteLeft } from 'react-icons/fa';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const Cards = (props) => {
-
+    const maxElement = props.maxElement;
     const iconStyle = {color:"blue"}
     const iconSize = 15;
+
+    const index = props.index;
+    const setIndex = props.setIndex;
+
+    function leftShiftHandler(){
+        if(index < 1){
+            console.log("I am called");
+            setIndex(1);
+        }
+        setIndex(index-1);
+    }
+
+    function rightShiftHandler(){
+        if(index > maxElement-1){
+            setIndex(0);
+        }
+        setIndex(index+1);
+    }
+
     return (
         <div className="relative flex flex-col items-center justify-center p-16 pb-10">
             {/* for image */}
@@ -26,8 +45,12 @@ const Cards = (props) => {
             <FaQuoteRight size={iconSize} style={iconStyle} className="opacity-70" />
 
             <div className="mt-8 flex gap-6 ">
-                <FiChevronLeft size={iconSize + 15} style={iconStyle} className="transition-opacity opacity-70 cursor-pointer hover:opacity-100" />
-                <FiChevronRight size={iconSize + 15 } style={iconStyle} className="transition-opacity opacity-70 cursor-pointer hover:opacity-100"/>
+                <FiChevronLeft size={iconSize + 15} style={iconStyle} className="transition-opacity opacity-70 cursor-pointer hover:opacity-100"
+                onClick={leftShiftHandler} />
+
+                <FiChevronRight size={iconSize + 15 } style={iconStyle} className="transition-opacity opacity-70 cursor-pointer hover:opacity-100"
+                onClick={rightShiftHandler} />
+
             </div>
 
             <div className="mt-6 text-[1.05rem] text-white font-bold py-2 px-10 bg-violet-500 rounded-md opacity-70 cursor-pointer
