@@ -1,7 +1,7 @@
 import "./App.css";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter,Link,NavLink,Routes,Route} from "react-router-dom";
-import Navbar from "./pages/Navbar";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
