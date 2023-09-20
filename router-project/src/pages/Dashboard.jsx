@@ -1,7 +1,7 @@
 const Dashboard = () => {
   return (
     <div>
-      DashBoard
+      Welcome to Study Notion !
     </div>
   )
 }

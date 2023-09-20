@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { AiOutlineEye,AiOutlineEyeInvisible } from 'react-icons/ai';
 
 function LoginForm(){
     const[loginFormData,setLoginFormData] = useState({email:"",password:""});
-    console.log(loginFormData);
+    const[showPassword,setShowPassword] = useState(false);
 
     function changeHandler(event){
         const{name,value,type} = event.target;
@@ -13,7 +12,7 @@ function LoginForm(){
     }
 
     return (
-        <div>
+        <form>
             <div className="flex flex-col">
                 <label htmlFor="userName">Email Address <sup>*</sup></label>
                 <input type="email" name="email" id="userName" placeholder="Enter Email Here" 
@@ -25,13 +24,14 @@ function LoginForm(){
 
             <div className="flex flex-col">
                 <label htmlFor="password">Password <sup>*</sup></label>
-                <input type="password" name="password" id="password" placeholder="Enter Password" 
+                <input type={showPassword ? "text" : "password"} name="password" id="password" placeholder="Enter Password" 
                 onChange={changeHandler} 
                 value={loginFormData.password}
-                className="text-black"  />
+                className="text-black"  /> 
+            </div>
 
-                <AiOutlineEye />
-                <AiOutlineEyeInvisible />
+            <div onClick={ () => setShowPassword( showPassword ? false:true ) }>
+                {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye /> }
             </div>
 
             <div>
@@ -42,7 +42,7 @@ function LoginForm(){
                 Sign In
             </button>
             
-        </div>
+        </form>
     )
 }
 

@@ -2,7 +2,7 @@ import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 
 const Template = (props) => {
-    const {heading,description1,description2,formType,image} = props.data;
+    const {heading,description1,description2,formType,image,pattern} = props.data;
 
     return (
         <div className="text-white flex">
@@ -31,6 +31,7 @@ const Template = (props) => {
 
             <div>
                 <img src={image} alt="login img" height={378} width={400} loading="lazy"/>
+                <img src={pattern} alt="pattern" height={378} width={400} loading="lazy"/>
             </div>
         </div>
     )
