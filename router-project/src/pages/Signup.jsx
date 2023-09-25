@@ -1,8 +1,13 @@
 import signupImg from "../assets/signup.png";
 import Template from "../components/Template";
 import pattern from "../assets/frame.png"
+import Dashboard from "./Dashboard";
+import { useContext } from "react";
+import { AppContext } from "../AppContext";
 
 const Signup = () => {
+
+  const {isLoggedIn} = useContext(AppContext);
 
   const signupData = {
     heading:"Join the millions learning to code with StudyNotion for free",
@@ -14,7 +19,9 @@ const Signup = () => {
   }
 
   return <div>
-    <Template data={signupData} />
+    {
+      isLoggedIn ? <Dashboard /> : <Template data={signupData} />
+    }
   </div>
 }
 

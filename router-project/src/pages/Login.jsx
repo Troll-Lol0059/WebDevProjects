@@ -1,8 +1,13 @@
 import loginImg from "../assets/login.png";
 import Template from "../components/Template";
 import pattern from "../assets/frame.png";
+import { useContext } from "react";
+import { AppContext } from "../AppContext";
+import Dashboard from "./Dashboard";
 
 const Login = () => {
+
+  const {isLoggedIn} = useContext(AppContext);
 
   const loginData = {
     heading:"Welcome Back",
@@ -14,8 +19,10 @@ const Login = () => {
   }
 
   return <div>
-    <Template 
-    data={loginData} />
+    {
+      isLoggedIn ? < Dashboard /> : <Template data={loginData} />
+    }
+
   </div>
 }
 
