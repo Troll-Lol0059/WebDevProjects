@@ -1,3 +1,6 @@
 export default function Random() {
-  return <div>Random</div>;
+  return <div>
+    Random
+
+    </div>;
 }
