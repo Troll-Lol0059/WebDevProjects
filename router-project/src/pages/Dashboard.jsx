@@ -1,6 +1,6 @@
 const Dashboard = () => {
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen text-[2rem]">
       Welcome to Study Notion !
     </div>
   )
