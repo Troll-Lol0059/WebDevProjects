@@ -7,7 +7,7 @@ function Homepage(props){
         <div className="grid grid-cols-4 mx-auto w-[84%] gap-4">
             {
                 products.map( (product,key)=> (
-                    <Card products={product} id={key} />
+                    <Card products={product} key={product.id} />
                  ) )
             }
         </div>
