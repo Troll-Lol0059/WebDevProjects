@@ -1,24 +1,27 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 import { useActionData } from "react-router-dom";
+import { addItem, removeItem } from "../redux/slices/cartSlice";
 
 const Card = (props) => {
 
+    const { cart } = useSelector((state) => state);
+    const dispatch = useDispatch();
+
     const { id, title, price, description, image } = props.products;
     let descriptionString = description.substring(0, 50) + " ....";
-    const [itemStatus,setItemStatus] = useState(null);
 
-    function clickHandler(id){
-        if(itemStatus){
-            setItemStatus(false);
-            toast.error("Item Removed");
-        }
-        else{
-            setItemStatus(true);
-            toast.success("Item Added to Cart");
-            console.log(props.products);
-        }
+    function addToCart() {
+        dispatch(addItem(props.products));
+        toast.success("Item Added to Cart");
     }
+
+    const removeFromCart = () => {
+        dispatch(removeItem(id));
+        toast.error("Item removed from Cart");
+    }
+
 
     return (
         <div className="flex flex-col items-center px-4 py-3 border-[3px] border-solid
@@ -47,15 +50,27 @@ const Card = (props) => {
                     $ {price}
                 </div>
 
-                <div className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
-                text-[12px] p-1 px-3 cursor-pointer
-                hover:bg-gray-700
-                hover:text-white transition duration-300 ease-in"
-                onClick={ clickHandler }>
-                    {
-                        itemStatus ? <span>REMOVE ITEM</span> : <span>ADD TO CART</span> 
-                    }
-                </div>
+                {
+                    // check if cart.id contains the props.id 
+                    cart.some((p) => p.id == id) ?
+                        (<button
+                            className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
+                            text-[12px] p-1 px-3 uppercase 
+                          hover:bg-gray-700
+                          hover:text-white transition duration-300 ease-in"
+                            onClick={removeFromCart}>
+                            Remove Item
+                        </button>) :
+                        (<button
+                            className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
+                            text-[12px] p-1 px-3 uppercase 
+                            hover:bg-gray-700
+                          hover:text-white transition duration-300 ease-in"
+                            onClick={addToCart}>
+                            Add to Cart
+                        </button>)
+                }
+
             </div>
 
         </div>

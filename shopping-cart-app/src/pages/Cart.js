@@ -1,11 +1,25 @@
-const Cart = ()=> {
-    return(
-        <div className="flex h-[85%] w-[80%] justify-center mx-auto">
+import { addItem,removeItem } from "../redux/slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import ShoppingItems from '../compnents/ShoppingItems'
 
-            <div className="flex flex-col w-[40%]">
+const Cart = ()=> {
+
+    const {cart} = useSelector( (state) => state );
+
+    return(
+        <div className="flex h-[85%] w-[80%] justify-center mx-auto overflow-y-auto gap-6">
+            {/* left section */}
+            <div className="flex flex-col w-[60%] overflow-y-auto ">
+
+                {
+                    cart.map( (item)=> (
+                        <ShoppingItems item={item} />
+                    ) )
+                }
                 
             </div>
 
+            {/* right section */}
             <div className="flex flex-col h-[100%] w-[40%] justify-between text-left pt-8">
 
                 <div>
