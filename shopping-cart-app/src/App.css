@@ -28,6 +28,26 @@
   color: #61dafb;
 }
 
+.cartIconAnimation{
+  animation-name: cartAnimation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes cartAnimation {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(20%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { useActionData } from "react-router-dom";
 import { addItem, removeItem } from "../redux/slices/cartSlice";
 
 const Card = (props) => {

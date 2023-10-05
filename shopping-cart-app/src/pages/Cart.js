@@ -1,23 +1,42 @@
-import { addItem,removeItem } from "../redux/slices/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ShoppingItems from '../compnents/ShoppingItems'
+import { NavLink } from "react-router-dom";
 
 const Cart = ()=> {
-
     const {cart} = useSelector( (state) => state );
+    const length = cart.length;
+    const totalPrice = cart.reduce( (total,num)=> (num.price + total) , 0 ).toFixed(2) ;
 
     return(
         <div className="flex h-[85%] w-[80%] justify-center mx-auto overflow-y-auto gap-6">
             {/* left section */}
-            <div className="flex flex-col w-[60%] overflow-y-auto ">
 
                 {
-                    cart.map( (item)=> (
-                        <ShoppingItems item={item} />
-                    ) )
+                    length === 0 ? 
+                    // if
+                    <div className="flex flex-col justify-center items-center w-[60%] gap-2"> 
+                        <p className="font-[900] text-[1.5rem] text-[#006400]">Your Cart is Empty !!</p>
+
+                        <p className="mb-4"> Shop Now For Intresting Offers</p>
+
+                        <button className="bg-[#006400] rounded-lg px-8 py-2 text-stone-200">                  
+                            <NavLink to={"/"} >
+                                Shop Now
+                            </NavLink>
+                        </button>
+
+                    </div> 
+                    
+                    :
+                    // else
+                    <div className="flex flex-col w-[60%] overflow-y-auto">
+                        {
+                            cart.map( (item,id)=> (
+                                <ShoppingItems item={item} key={id} />
+                            ) )
+                        }
+                    </div>
                 }
-                
-            </div>
 
             {/* right section */}
             <div className="flex flex-col h-[100%] w-[40%] justify-between text-left pt-8">
@@ -25,13 +44,13 @@ const Cart = ()=> {
                 <div>
                     <div className="text-[#006400] text-[1.25rem]">Your Cart</div>
                     <div className="text-[#006400] text-3xl font-[900] mb-3">SUMMARY</div>
-                    <div className="text-[1rem] font-bold">Total Items: X</div>
+                    <div className="text-[1rem] font-bold">Total Items: {length} </div>
                 </div>
 
                 <div className="w-full">
                     <div className="flex gap-1 items-center mb-2">
                         <span className="text-[1.25rem]">Total Amount:  </span> 
-                        <span className="text-[1.35rem] font-[900] font-sans"><b>$ 0.00</b></span>
+                        <span className="text-[1.35rem] font-[900] font-sans"><b>$ {totalPrice}</b></span>
                     </div>
 
                     <div className="w-[75%] bg-[#006400] text-white font-bold rounded-lg py-3 px-4

@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-import { ShoppingItems } from './compnents/ShoppingItems';
 import Navbar from './compnents/Navbar';
 import Homepage from './pages/Homepage';
 import Cart from './pages/Cart';
@@ -15,6 +13,7 @@ function App() {
       <Navbar />
 
       <Routes>
+
         <Route index element={ <Homepage data={data}/> } />
         <Route path='/' element={ <Homepage  data={data}/> } />
         <Route path='/cart' element= { <Cart /> }  />

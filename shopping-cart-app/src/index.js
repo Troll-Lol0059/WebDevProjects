@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import AppContextProvider from './context/AppContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,9 +13,7 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <Toaster />
-      <AppContextProvider >
         <App />
-      </AppContextProvider>
     </BrowserRouter>
   </Provider>
 
