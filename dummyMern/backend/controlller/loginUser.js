@@ -70,7 +70,7 @@ exports.loginUser = async(req,res) => {
 
         }
         else{
-            // password dont matches
+            // password dont match      
             return res.status(403).json({
                 success:false,
                 message:"Password Dont Match"
