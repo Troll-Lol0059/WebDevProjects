@@ -16,7 +16,7 @@ router.post("/login",loginUser);
 router.get("/student",auth,isStudent, (req,res) =>{
     res.json({
         success:true,
-        message:"Login Successfull"
+        message:"Welcome to Student Portal"
     })
 } );
 
@@ -24,7 +24,7 @@ router.get("/student",auth,isStudent, (req,res) =>{
 router.get("/admin",auth,isAdmin, (req,res) =>{
     res.json({
         success:true,
-        message:"Login Successfull"
+        message:"Welcome to Admin Portal"
     })
 } );
 
