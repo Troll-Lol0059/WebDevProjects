@@ -5,9 +5,9 @@ require("dotenv").config();
 exports.auth = (req,res,next) => {
     try{
         // fetch token from req ka body
-        const token = req.body.token;
+        const token = req.body.token || req.header("Authorization").replace("Bearer ", "");
         // if token not present then return
-        if(!token){
+        if(!token || token === undefined){
             // if token not present
             return res.status(401).json({
                 success:false,
@@ -40,7 +40,6 @@ exports.auth = (req,res,next) => {
 // middleware to verify roles
 exports.isStudent = (req,res,next) => {
     try{
-        console.log(req.user.role);
         if(req.user.role !== "Student"){
             return res.status(401).json({
                 success:false,
