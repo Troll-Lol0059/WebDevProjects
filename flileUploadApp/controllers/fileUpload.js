@@ -27,8 +27,9 @@ exports.localFileUpload = ( async(req,res) => {
 } )
 
 // function to upload to cloudinary
-async function uplloadFileToCloudinary(file,folder){
+async function uploadFileToCloudinary(file,folder){
     const options = {folder};
+    options.resource_type = "auto";
     return await cloudinary.uploader.upload(file.tempFilePath,options);
 }
 
@@ -59,7 +60,7 @@ exports.imageUpload = ( async(req,res) =>{
             })
         }
  
-        const response = await uplloadFileToCloudinary(file,"Codehelp");
+        const response = await uploadFileToCloudinary(file,"Codehelp");
         console.log(response);
         // db me entry daal do
         const fileData = await File.create({
@@ -82,3 +83,51 @@ exports.imageUpload = ( async(req,res) =>{
         })
     }
 })
+
+
+// upload video to cloudinary
+exports.videoUpload = ( async(req,res) =>{
+    try{
+        // data fetch
+        const {name,email,tag} = req.body;
+        // fetch file
+        const file = req.files.video;
+
+        // validation
+        const supportedType = ["mp4","mov"];
+        // format nikalo file name se
+        const fileType = file.name.split('.')[1];
+        console.log(fileType);
+
+        // kya format supported hai
+        if(!isFileTypeSupported(fileType,supportedType)){
+            return res.status(400).json({
+                success:false,
+                message:"File format not supported"
+            })
+        }
+ 
+        const response = await uploadFileToCloudinary(file,"Codehelp");
+        console.log(response);
+        // db me entry daal do
+        const fileData = await File.create({
+            name,
+            tag,
+            email,
+            // secure url is url of uploaded image , saving it in db for future use
+            imageUrl:response.secure_url,
+        })
+ 
+        res.json({
+            success:true,
+            message:"Image uploaded successfully"
+        })
+    }catch(error){
+        console.error(error);
+        res.status(400).json({
+            success:false,
+            message:"Something Went Wrong",
+        })
+    }
+})
+

@@ -7,7 +7,7 @@ const dbConnect = require('./config/database');
 const cloudinary = require('./config/clodinaryConfig');
 const routes = require('./router/routes');
 
-
+// MIDDLEWARES
 app.use(express.json());
 
 app.use(fileUpload({
@@ -17,6 +17,7 @@ app.use(fileUpload({
 
 app.use("/api/v1",routes)
 
+// DATABASE CONNECTION
 dbConnect();
 cloudinary.cloudinaryConnect();
 
