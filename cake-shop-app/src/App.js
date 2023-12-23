@@ -6,6 +6,7 @@ import Cart from './pages/Cart';
 import NotFound from './pages/NotFound';
 import products from './data/data.js'
 import TrackOrder from './pages/TrackOrder.jsx';
+import LandingPage from './pages/LandingPage.jsx';
 
 
 function App() {
@@ -15,9 +16,8 @@ function App() {
       <Navbar />
 
       <Routes>
-
-        <Route index element={ <Homepage data={products}/> } />
-        <Route path='/' element={ <Homepage  data={products}/> } />
+        <Route index element={ <LandingPage/> } />
+        <Route path='/shop' element={ <Homepage  data={products}/> } />
         <Route path='/cart' element= { <Cart /> }  />
         <Route path='/trackOrder' element= { <TrackOrder /> }  />
         <Route path="*" element={ <NotFound /> } />
