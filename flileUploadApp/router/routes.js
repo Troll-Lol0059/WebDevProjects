@@ -5,6 +5,7 @@ const router = express.Router();
 const {localFileUpload} = require('../controllers/fileUpload');
 const {imageUpload} = require('../controllers/fileUpload');
 const {videoUpload} = require('../controllers/fileUpload');
+const {uploadReducedImage} = require('../controllers/fileUpload');
 
 // mapping routes to controllers
 
@@ -13,6 +14,7 @@ router.post('/uploadLocal',localFileUpload);
 // upload a image & video to Cloudinary 
 router.post('/videoUpload',videoUpload);
 router.post('/imageUpload',imageUpload);
+router.post('/uploadReduced',uploadReducedImage);
 
 
 module.exports = router;
