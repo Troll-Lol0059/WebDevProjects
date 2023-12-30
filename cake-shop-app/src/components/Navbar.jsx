@@ -1,16 +1,16 @@
 import cakeShopLogo from '../assets/cakeShopLogo.png';
-import { FaShoppingCart,FaSearchLocation } from 'react-icons/fa';
+import { FaShoppingCart, FaSearchLocation } from 'react-icons/fa';
 import { IconContext } from "react-icons";
-import { Link,NavLink } from 'react-router-dom';
+import { Link, NavLink,useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
 const Navbar = () => {
-    
-    const {cart} = useSelector( (state) => state );
+    const navigate = useNavigate();
+    const { cart } = useSelector((state) => state);
 
     return (
-        <div className='bg-red-400 min-h-[13%] flex justify-between items-center px-[7.5rem] py-[0.75rem]'>
+        <div className='bg-red-400 min-h-[13%] flex justify-between items-center px-[4rem] py-[0.75rem] text-black text-base font-[400]'>
             <Link to={"/"} >
                 <div className='flex justify-center items-center gap-2'>
                     <img src={cakeShopLogo} alt='website logo' className='h-[4rem]' />
@@ -21,25 +21,55 @@ const Navbar = () => {
                 </div>
             </Link>
 
-            <div className='flex justify-center items-center gap-6 px-4 relative'>
-
-                <div className='text-white font-[500] text-[1.35rem]'>
-                    <NavLink to={"/"} >
+            <div className='font-[500] gap-4 flex'>
+                    <NavLink to={"/"} style={({ isActive }) => {
+                                        return isActive ? { color: "yellow" } : {};
+                                        }}>
                         Home
                     </NavLink>
-                </div>
 
-                <IconContext.Provider value={{ color: "white", size: "1.75rem" }}>
+                    <NavLink to={"/shop"} className={"active"} style={({ isActive }) => {
+                                        return isActive ? { color: "yellow" } : {};
+                                        }}>
+                        Catalog
+                    </NavLink>
+
+                    <NavLink to={"/aboutUs"} className={"active"} style={({ isActive }) => {
+                                        return isActive ? { color: "yellow" } : {};
+                                        }}>
+                        About Us
+                    </NavLink>
+
+                    <NavLink to={"/contactUs"} className={"active"} style={({ isActive }) => {
+                                        return isActive ? { color: "yellow" } : {};
+                                        }}>
+                        Contact Us
+                    </NavLink>
+            </div>
+
+            <div className='flex gap-4'>
+                    <div className='bg-[#161D29] border border-[#2C333F] rounded-md py-1 px-4 text-[#AFB2BF] cursor-pointer'
+                                onClick={ () => {navigate("/login")}} >
+                        Login 
+                    </div>
+
+                    <div className='bg-[#161D29] border border-[#2C333F] rounded-md py-1 px-4 text-[#AFB2BF] cursor-pointer'
+                                    onClick={ () => {navigate("/signup")}} >
+                        Signup
+                    </div>
+            </div>
+
+                {/* <IconContext.Provider value={{color: "white", size: "1.75rem"}}>
                     <NavLink to={"/trackOrder"}>
                         <div>
                             <FaSearchLocation />
                         </div>
 
                     </NavLink>
-                </IconContext.Provider>
+                </IconContext.Provider> */}
 
 
-                <IconContext.Provider value={{ color: "white", size: "1.75rem" }}>
+                {/* <IconContext.Provider value={{ color: "white", size: "1.75rem" }}>
                     <NavLink to={"/cart"}>
                         <div>
                             <FaShoppingCart />
@@ -55,12 +85,10 @@ const Navbar = () => {
                          }
 
                     </NavLink>
-                </IconContext.Provider>
+                </IconContext.Provider> */}
 
             </div>
 
-
-        </div>
     )
 };
 

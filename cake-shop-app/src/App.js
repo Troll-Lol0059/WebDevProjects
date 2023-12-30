@@ -7,6 +7,8 @@ import NotFound from './pages/NotFound';
 import products from './data/data.js'
 import TrackOrder from './pages/TrackOrder.jsx';
 import LandingPage from './pages/LandingPage.jsx';
+import Signup from './pages/Signup.jsx';
+import Login from './pages/Login.jsx';
 
 
 function App() {
@@ -19,9 +21,10 @@ function App() {
         <Route index element={ <LandingPage/> } />
         <Route path='/shop' element={ <Homepage  data={products}/> } />
         <Route path='/cart' element= { <Cart /> }  />
+        <Route path='/signup' element= { <Signup /> }  />
+        <Route path='/login' element= { <Login /> }  />
         <Route path='/trackOrder' element= { <TrackOrder /> }  />
         <Route path="*" element={ <NotFound /> } />
-
       </Routes>
       
     </div>
