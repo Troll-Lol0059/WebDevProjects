@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // import controlllers
-const {createUser} = require('../controlller/createUser');
+const {createUser,sendOTP} = require('../controlller/createUser');
 const {loginUser} = require('../controlller/loginUser');
 const { isStudent } = require('../middlewares/auth');
 const { isAdmin } = require('../middlewares/auth');
@@ -10,6 +10,7 @@ const {auth} = require('../middlewares/auth');
 
 // map routes
 router.post("/createUser",createUser);
+router.post("/sendOTP",sendOTP);
 router.post("/login",loginUser);
 
 // protected routes

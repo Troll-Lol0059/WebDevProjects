@@ -1,13 +1,18 @@
 import cakeShopLogo from '../assets/cakeShopLogo.png';
 import { FaShoppingCart, FaSearchLocation } from 'react-icons/fa';
 import { IconContext } from "react-icons";
-import { Link, NavLink,useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ProfileDropDown from "../components/ProfileDropDown";
 
 
 const Navbar = () => {
     const navigate = useNavigate();
     const { cart } = useSelector((state) => state);
+    const { token } = useSelector((state) => state.auth);
+    const { user } = useSelector( (state) => state.profile );
+    console.log(user);
+    
 
     return (
         <div className='bg-red-400 min-h-[13%] flex justify-between items-center px-[4rem] py-[0.75rem] text-black text-base font-[400]'>
@@ -22,72 +27,81 @@ const Navbar = () => {
             </Link>
 
             <div className='font-[500] gap-4 flex'>
-                    <NavLink to={"/"} style={({ isActive }) => {
-                                        return isActive ? { color: "yellow" } : {};
-                                        }}>
-                        Home
-                    </NavLink>
+                <NavLink to={"/"} style={({ isActive }) => {
+                    return isActive ? { color: "yellow" } : {};
+                }}>
+                    Home
+                </NavLink>
 
-                    <NavLink to={"/shop"} className={"active"} style={({ isActive }) => {
-                                        return isActive ? { color: "yellow" } : {};
-                                        }}>
-                        Catalog
-                    </NavLink>
+                <NavLink to={"/shop"} className={"active"} style={({ isActive }) => {
+                    return isActive ? { color: "yellow" } : {};
+                }}>
+                    Catalog
+                </NavLink>
 
-                    <NavLink to={"/aboutUs"} className={"active"} style={({ isActive }) => {
-                                        return isActive ? { color: "yellow" } : {};
-                                        }}>
-                        About Us
-                    </NavLink>
+                <NavLink to={"/aboutUs"} className={"active"} style={({ isActive }) => {
+                    return isActive ? { color: "yellow" } : {};
+                }}>
+                    About Us
+                </NavLink>
 
-                    <NavLink to={"/contactUs"} className={"active"} style={({ isActive }) => {
-                                        return isActive ? { color: "yellow" } : {};
-                                        }}>
-                        Contact Us
-                    </NavLink>
+                <NavLink to={"/contactUs"} className={"active"} style={({ isActive }) => {
+                    return isActive ? { color: "yellow" } : {};
+                }}>
+                    Contact Us
+                </NavLink>
             </div>
 
-            <div className='flex gap-4'>
-                    <div className='bg-[#161D29] border border-[#2C333F] rounded-md py-1 px-4 text-[#AFB2BF] cursor-pointer'
-                                onClick={ () => {navigate("/login")}} >
-                        Login 
-                    </div>
+            {
+                (!token) ?
 
-                    <div className='bg-[#161D29] border border-[#2C333F] rounded-md py-1 px-4 text-[#AFB2BF] cursor-pointer'
-                                    onClick={ () => {navigate("/signup")}} >
-                        Signup
-                    </div>
-            </div>
-
-                {/* <IconContext.Provider value={{color: "white", size: "1.75rem"}}>
-                    <NavLink to={"/trackOrder"}>
-                        <div>
-                            <FaSearchLocation />
+                    <div className='flex gap-4'>
+                        <div className='bg-[#161D29] border border-[#2C333F] rounded-md py-1 px-4 text-[#AFB2BF] cursor-pointer'
+                            onClick={() => { navigate("/login") }} >
+                            Login
                         </div>
 
-                    </NavLink>
-                </IconContext.Provider> */}
-
-
-                {/* <IconContext.Provider value={{ color: "white", size: "1.75rem" }}>
-                    <NavLink to={"/cart"}>
-                        <div>
-                            <FaShoppingCart />
+                        <div className='bg-[#161D29] border border-[#2C333F] rounded-md py-1 px-4 text-[#AFB2BF] cursor-pointer'
+                            onClick={() => { navigate("/signup") }} >
+                            Signup
                         </div>
+                    </div> :
 
-                        {
-                            cart.length === 0 ? <div> </div> : 
-                       
-                            <div className='h-[20px] w-[20px] bg-[#006400] rounded-full absolute text-white font-[500]
-                                text-[0.75rem] flex justify-center items-center -top-3 right-1 cartIconAnimation'>
-                                {cart.length}
-                            </div>
-                         }
+                    <div className='flex gap-8 justify-center items-center'>
+                        <IconContext.Provider value={{ color: "[#161D29]", size: "1.75rem" }}>
+                            <NavLink to={"/trackOrder"}>
+                                <div>
+                                    <FaSearchLocation />
+                                </div>
 
-                    </NavLink>
-                </IconContext.Provider> */}
+                            </NavLink>
+                        </IconContext.Provider>
 
-            </div>
+                        <IconContext.Provider value={{ color: "[#161D29]", size: "1.75rem" }}>
+                            <NavLink to={"/cart"}>
+                                <div>
+                                    <FaShoppingCart />
+                                </div>
+
+                                {
+                                    cart.length === 0 ? <div> </div> :
+
+                                        <div className='h-[20px] w-[20px] aspect-sqaure bg-[#006400] rounded-full absolute text-white font-[500]
+                                          text-[0.75rem] flex justify-center items-center top-3 right-[8.75rem] cartIconAnimation'>
+                                            {cart.length}
+                                        </div>
+                                }
+
+                            </NavLink>
+                        </IconContext.Provider>
+
+                        <div>
+                            <ProfileDropDown />
+                        </div>
+                    </div>
+            }
+
+        </div>
 
     )
 };

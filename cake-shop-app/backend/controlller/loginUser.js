@@ -16,7 +16,7 @@ exports.loginUser = async(req,res) => {
         }
 
         // hashing password  
-       let hashedPassword;
+        let hashedPassword;
 
         try{
             hashedPassword = await bcrypt.hash(password,10);
@@ -28,32 +28,32 @@ exports.loginUser = async(req,res) => {
             })
         }
 
-        let existingUser = await User.findOne( {email} );
+        let user = await User.findOne( {email} );
 
-        if(!existingUser){
+        if(!user){
             return res.status(500).json({
                 success:false,
-                message:"User Does not Exists"
+                message:"User Does not Exists, Please sign Up"
             })
         }
 
-        if( await bcrypt.compare(password,existingUser.password) ){
+        if( await bcrypt.compare(password,user.password) ){
             // if password matches
             // create jwt token
             const payload = {
-                email:existingUser.email,
-                id:existingUser._id,
-                role:existingUser.role,
+                email:user.email,
+                id:user._id,
+                role:user.role,
             }
             const token = jwt.sign(payload,process.env.JWT_SECRET_KEY,{
                 expiresIn:"2h",
             })
 
-            existingUser = existingUser.toObject();
-            existingUser.password = undefined;
-            existingUser.confirmpassword = undefined;
-            existingUser.token = token;
-            console.log(existingUser);
+            user = user.toObject();
+            user.password = undefined;
+            user.confirmpassword = undefined;
+            user.token = token;
+            console.log(user);
 
             const options = {
                 expires: new Date( Date.now() + 3*24*60*60*1000 ),
@@ -63,7 +63,7 @@ exports.loginUser = async(req,res) => {
             res.cookie("token",token,options).status(200).json({
                 success:true,
                 token,
-                existingUser,
+                user,
                 message:"Logged In Successfully",
             });
             console.log("Login Done");

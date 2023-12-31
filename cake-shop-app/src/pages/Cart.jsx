@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
 import ShoppingItems from '../components/ShoppingItems'
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 const Cart = ()=> {
     const {cart} = useSelector( (state) => state );
     const length = cart.length;
-    const totalPrice = cart.reduce( (total,num)=> (num.price + total) , 0 ) ;
+    const [quantity,setQuantity] = useState(1);
+    const totalPrice = quantity * (cart.reduce( (total,num)=> (num.price + total) , 0 )) ;
 
     return(
         <div className="flex h-[85%] w-[80%] justify-center mx-auto overflow-y-auto gap-6">
@@ -20,7 +22,7 @@ const Cart = ()=> {
                         <p className="mb-4"> Shop Now For Intresting Offers</p>
 
                         <button className="bg-[#006400] rounded-lg px-8 py-2 text-stone-200">                  
-                            <NavLink to={"/"} >
+                            <NavLink to={"/shop"} >
                                 Shop Now
                             </NavLink>
                         </button>
@@ -33,7 +35,7 @@ const Cart = ()=> {
                     <div className="flex flex-col w-[60%] overflow-y-auto">
                         {
                             cart.map( (item,id)=> (
-                                <ShoppingItems item={item} key={id} />
+                                <ShoppingItems item={item} quantity={quantity} setQuantity={setQuantity} key={id} />
                             ) )
                         }
                     </div>

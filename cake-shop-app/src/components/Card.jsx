@@ -1,15 +1,18 @@
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, removeItem } from "../redux/slices/cartSlice";
+import { addItem, removeItem } from "../slices/cartSlice";
 import {FcLike,FcLikePlaceholder} from "react-icons/fc";
 import image1 from '../assets/cakeImages/1.jpg';
 import image2 from '../assets/cakeImages/2.jpg';
+import { useNavigate } from "react-router-dom";
 
 
 const Card = (props) => {
 
     const { cart } = useSelector((state) => state);
+    const {token} = useSelector( (state) => state.auth )
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const { id,title,category,image,description,price,rating,review } = props.products;  
 
@@ -46,6 +49,10 @@ const Card = (props) => {
     }
 
     function addToCart() {
+        if(!token){
+            navigate("/login");
+            return;
+        }
         dispatch(addItem(props.products));
         toast.success("Item Added to Cart");
     }

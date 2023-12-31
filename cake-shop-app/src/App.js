@@ -9,6 +9,9 @@ import TrackOrder from './pages/TrackOrder.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
+import VerifyEmail from "./pages/VerifyEmail.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
 
 
 function App() {
@@ -24,6 +27,9 @@ function App() {
         <Route path='/signup' element= { <Signup /> }  />
         <Route path='/login' element= { <Login /> }  />
         <Route path='/trackOrder' element= { <TrackOrder /> }  />
+        <Route path='/verifyEmail' element= { <VerifyEmail /> }  />
+        <Route path='/dashboard/my-profile' element={<Dashboard />} />
+        <Route path='/contactUs' element={<ContactUs />} />
         <Route path="*" element={ <NotFound /> } />
       </Routes>
       
