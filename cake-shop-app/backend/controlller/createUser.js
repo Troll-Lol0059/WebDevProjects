@@ -40,17 +40,17 @@ exports.sendOTP = async (req, res) => {
     console.log(otpBody);
 
     // send notification mail
-    try {
-      await mailSender(email,
-        "OTP for Email Verification",otp);
+    // try {
+    //   await mailSender(email,
+    //     "OTP for Email Verification",otp);
 
-    } catch (error) {
-      console.log("Error occured while sending OTP mail");
-      return res.status(400).json({
-        success: false,
-        message: error.message,
-      })
-    }
+    // } catch (error) {
+    //   console.log("Error occured while sending OTP mail");
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: error.message,
+    //   })
+    // }
 
     // return successful response
     res.status(200).json({
