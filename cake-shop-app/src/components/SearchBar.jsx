@@ -15,7 +15,6 @@ function SearchBar() {
 
     
 
-
   return (
     <form className='w-[80%] flex mx-auto justify-center mt-6 gap-4 items-center'
     onSubmit={handleSubmit(submitHandler)}>

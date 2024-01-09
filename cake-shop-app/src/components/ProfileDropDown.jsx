@@ -16,6 +16,7 @@ export default function ProfileDropdown() {
 
   useOnClickOutside(ref, () => setOpen(false))
 
+  
   if (!user) return null
 
   return (

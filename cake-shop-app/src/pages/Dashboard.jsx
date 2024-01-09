@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import MyProfile from '../components/dashboard/MyProfile';
+
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <div>
+      <MyProfile />
+    </div>
   )
 }
 
