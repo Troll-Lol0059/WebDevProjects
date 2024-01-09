@@ -67,8 +67,8 @@ function MyProfile() {
                 <div>
                     <div className='flex items-center justify-between lg:w-[50%] mb-4'>
                         <div>
-                            <div className='text-[14px] font-[400] text-richblack-600'>First Name</div>
-                            <div className='text-[14px] font-[500] text-richblack-5'>{user?.firstName}</div>
+                            <div className='text-[14px] font-400 text-richblack-600'>First Name</div>
+                            <div className='text-[14px] font-500 text-richblack-5'>{user?.firstName}</div>
                         </div>
                         <div>
                             <div className='text-[14px] font-400 text-richblack-600'>Last Name</div>
@@ -78,8 +78,8 @@ function MyProfile() {
 
                     <div className='flex items-center justify-between lg:w-[50%]'>
                         <div>
-                            <div className='text-[14px] font-[400] text-richblack-600'>Email</div>
-                            <div className='text-[14px] font-[500] text-richblack-5'>{user?.email}</div>
+                            <div className='text-[14px] font-400 text-richblack-600'>Email</div>
+                            <div className='text-[14px] font-500 text-richblack-5'>{user?.email}</div>
                         </div>
                         <div>
                             <div className='text-[14px] font-400 text-richblack-600'>Phone No.</div>
